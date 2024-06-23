@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import './screen/device.dart';
+
+import 'screen/device.dart';
 
 void main() {
   runApp(const MainApp());
@@ -14,8 +15,12 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'Poppins',
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: const Color.fromARGB(255, 65, 14, 86),
+        primarySwatch: Colors.deepPurple,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Scaffold(
+      home: const Scaffold(
         body: Center(
           child: DeviceScreen(),
         ),

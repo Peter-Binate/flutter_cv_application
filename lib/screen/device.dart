@@ -1,50 +1,76 @@
+// screen/device.dart
+//
+
+//import "package:cv/screen/competence.dart";
 import 'package:flutter/material.dart';
-import 'profil.dart';
+
+import 'competence.dart';
 import 'experience.dart';
 import 'formation.dart';
-import 'skills.dart';
 import 'info.dart';
+import 'profil.dart';
 
 class DeviceScreen extends StatefulWidget {
+  const DeviceScreen({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _DeviceScreenState createState() => _DeviceScreenState();
 }
 
 class _DeviceScreenState extends State<DeviceScreen> {
-  int _currentIndex = 0;
-  final List<Widget> _screenList = [
+  int _currentScreen = 0;
+  final List<Widget> _screenList = const [
     ProfilScreen(),
     ExperienceScreen(),
     FormationScreen(),
-    SkillsScreen(),
-    InfoScreen(),
+    CompetenceScreen(),
+    InfoScreen()
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _screenList[_currentIndex],
+      body: _screenList[_currentScreen],
       bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.redAccent,
-        unselectedItemColor: Colors.grey,
-        currentIndex: _currentIndex,
-        onTap: onTapTapped,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profil'),
-          BottomNavigationBarItem(icon: Icon(Icons.account_balance), label: 'Expérience'),
-          BottomNavigationBarItem(icon: Icon(Icons.school), label: 'Formation'),
-          BottomNavigationBarItem(icon: Icon(Icons.memory), label: 'Compétences'),
-          BottomNavigationBarItem(icon: Icon(Icons.info), label: 'Infos+'),
-        ],
-      ),
+          type: BottomNavigationBarType.fixed,
+          selectedItemColor: Colors.deepPurple,
+          unselectedItemColor: Colors.white,
+          currentIndex: _currentScreen,
+          onTap: onTabTapped,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.person,
+                ),
+                label: 'Profil'),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.account_balance,
+                ),
+                label: 'Experience'),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.school,
+                ),
+                label: 'Formation'),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.memory,
+                ),
+                label: 'Compétence'),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.info,
+                ),
+                label: 'Infos'),
+          ]),
     );
   }
 
-  void onTapTapped(int index) {
+  void onTabTapped(int index) {
     setState(() {
-      _currentIndex = index;
+      _currentScreen = index;
     });
   }
 }
-
